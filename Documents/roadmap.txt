@@ -1,0 +1,8 @@
+roadmap
+
+Phase 1:
+- analyse and document old website (screenshots + functionality + content)
+- Architecture diagramm (+ tech stack)
+- Create Figmamoodboard
+- Create Figma Design (+ create it with v0)
+- gather infos
