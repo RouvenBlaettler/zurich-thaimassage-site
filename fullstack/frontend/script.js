@@ -21,13 +21,15 @@ form.addEventListener("submit", async (event) => {
         body: JSON.stringify({
             firstname: document.getElementById("fname").value,
             lastname: document.getElementById("lname").value,
-            country: document.getElementById("country").value
+            massagetype: document.getElementById("massagetype").value
         })
     });
 
     const data = await response.json();
 
     status.textContent = data.message;
+
+    form.reset();
 
 
     console.log(data);

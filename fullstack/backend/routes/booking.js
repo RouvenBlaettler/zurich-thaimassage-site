@@ -6,8 +6,8 @@ router.post("/", (req,res) => {
     console.log(req.body);
 
     res.json({
-        message: "booking recieved",
-        booking: req.body
+    message: `Hallo ${req.body.firstname}, Buchung erhalten!`,
+    booking: req.body
     });
 });
 
