@@ -1,0 +1,106 @@
+.about-hero {
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(217, 185, 74, 0.12), transparent 60%),
+    linear-gradient(160deg, var(--maroon-800), var(--maroon-950));
+  color: var(--cream);
+  padding: clamp(5rem, 12vw, 7rem) 0 clamp(3rem, 6vw, 4rem);
+}
+
+.about-hero h1 {
+  margin-top: 1rem;
+  font-size: clamp(2rem, 4.6vw, 3.2rem);
+  max-width: 20ch;
+}
+
+.about-point-inner {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-point-inner.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-point-text {
+  flex: 1;
+}
+
+.about-point-text h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 0.6rem 0 1rem;
+}
+
+.about-point-visual {
+  flex: 0 0 220px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-point-visual svg {
+  width: 70%;
+  height: 70%;
+}
+
+.about-point.band-gold {
+  background: linear-gradient(160deg, var(--gold-400), var(--gold-600));
+}
+
+.about-point.band-gold .eyebrow {
+  color: var(--maroon-700);
+}
+
+.about-point.band-gold h2,
+.about-point.band-gold p {
+  color: var(--maroon-950);
+}
+
+.about-point.band-gold .about-point-visual {
+  background: rgba(107, 20, 32, 0.12);
+  color: var(--maroon-700);
+  border: 1px solid rgba(107, 20, 32, 0.25);
+}
+
+.about-point.band-maroon {
+  background: linear-gradient(160deg, var(--maroon-800), var(--maroon-950));
+}
+
+.about-point.band-maroon .eyebrow {
+  color: var(--gold-400);
+}
+
+.about-point.band-maroon h2 {
+  color: var(--cream);
+}
+
+.about-point.band-maroon p {
+  color: var(--cream-dim);
+}
+
+.about-point.band-maroon .about-point-visual {
+  background: rgba(217, 185, 74, 0.1);
+  color: var(--gold-400);
+  border: 1px solid rgba(217, 185, 74, 0.3);
+}
+
+.about-cta {
+  text-align: center;
+  background: var(--cream);
+}
+
+.about-cta h2 {
+  color: var(--maroon-800);
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+}
+
+@media (max-width: 760px) {
+  .about-point-inner,
+  .about-point-inner.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+}
