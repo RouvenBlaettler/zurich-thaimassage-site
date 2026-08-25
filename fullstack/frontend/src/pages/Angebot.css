@@ -56,7 +56,7 @@
   font-size: 0.95rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid transparent;
-  transition: all 0.2s ease;
+  transition: color 200ms ease, opacity 200ms ease, border-color 200ms var(--ease-out);
 }
 
 .offer-tab:hover {
@@ -82,6 +82,21 @@
   gap: 1.5rem;
   padding: 1.4rem 0;
   border-bottom: 1px solid rgba(217, 185, 74, 0.16);
+  opacity: 1;
+  transform: none;
+  transition: opacity 320ms var(--ease-out) calc(var(--row-i, 0) * 35ms),
+    transform 320ms var(--ease-out) calc(var(--row-i, 0) * 35ms);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offer-row {
+    transition: none;
+  }
 }
 
 .offer-row-name {

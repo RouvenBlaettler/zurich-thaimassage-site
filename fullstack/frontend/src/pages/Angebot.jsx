@@ -38,9 +38,10 @@ export default function Angebot() {
             ))}
           </div>
 
-          <ul className="offer-rows">
-            {filtered.map((service) => (
-              <li key={service.id} className="offer-row">
+          {/* Keyed on `active` so switching tabs remounts the rows and replays the stagger-in. */}
+          <ul className="offer-rows" key={active}>
+            {filtered.map((service, i) => (
+              <li key={service.id} className="offer-row" style={{ '--row-i': i }}>
                 <span className="offer-row-name">{service.name}</span>
                 <span className="offer-row-price">CHF {service.price}</span>
                 <Link

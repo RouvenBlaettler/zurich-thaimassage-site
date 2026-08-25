@@ -52,8 +52,8 @@ export default function Navbar() {
         </button>
       </div>
 
-      {open && (
-        <nav className="navbar-mobile" aria-label="Mobile Navigation">
+      <div className={`navbar-mobile-wrap${open ? ' is-open' : ''}`}>
+        <nav className="navbar-mobile" aria-label="Mobile Navigation" aria-hidden={!open}>
           {links.map((link) => (
             <NavLink
               key={link.to}
@@ -61,15 +61,21 @@ export default function Navbar() {
               end={link.to === '/'}
               className={({ isActive }) => `nav-pill${isActive ? ' active' : ''}`}
               onClick={() => setOpen(false)}
+              tabIndex={open ? undefined : -1}
             >
               {link.label}
             </NavLink>
           ))}
-          <NavLink to="/jetzt-buchen" className="btn btn-gold" onClick={() => setOpen(false)}>
+          <NavLink
+            to="/jetzt-buchen"
+            className="btn btn-gold"
+            onClick={() => setOpen(false)}
+            tabIndex={open ? undefined : -1}
+          >
             Jetzt buchen
           </NavLink>
         </nav>
-      )}
+      </div>
     </header>
   );
 }

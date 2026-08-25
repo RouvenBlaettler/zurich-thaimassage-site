@@ -68,12 +68,14 @@ export default function Home() {
           </Reveal>
           <div className="massages-grid">
             {massages.map((m, i) => (
-              <Reveal key={m.name} delay={i * 100} as="article" className="massage-card">
-                <div className="massage-icon">
-                  <m.icon />
-                </div>
-                <h3>{m.name}</h3>
-                <p>{m.text}</p>
+              <Reveal key={m.name} delay={i * 100}>
+                <article className="massage-card">
+                  <div className="massage-icon">
+                    <m.icon />
+                  </div>
+                  <h3>{m.name}</h3>
+                  <p>{m.text}</p>
+                </article>
               </Reveal>
             ))}
           </div>

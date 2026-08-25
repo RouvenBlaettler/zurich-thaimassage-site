@@ -60,10 +60,15 @@
   border-radius: 50%;
   background: rgba(107, 20, 32, 0.1);
   color: var(--maroon-800);
+  transition: background 160ms ease, transform 120ms var(--ease-out);
 }
 
 .booking-month-nav button:hover {
   background: rgba(107, 20, 32, 0.2);
+}
+
+.booking-month-nav button:active {
+  transform: scale(0.9);
 }
 
 .booking-weekdays {
@@ -88,11 +93,15 @@
   border-radius: 50%;
   color: var(--maroon-900);
   font-size: 0.9rem;
-  transition: all 0.2s ease;
+  transition: background 160ms ease, color 160ms ease, transform 120ms var(--ease-out);
 }
 
 .booking-day:not(.empty):hover {
   background: rgba(107, 20, 32, 0.12);
+}
+
+.booking-day:not(.empty):active {
+  transform: scale(0.88);
 }
 
 .booking-day.selected {
@@ -112,6 +121,20 @@
   border-radius: 10px;
   color: var(--maroon-900);
   font-size: 0.9rem;
+  opacity: 1;
+  transform: none;
+  transition: opacity 280ms var(--ease-out), transform 280ms var(--ease-out);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-availability {
+    transition: none;
+  }
 }
 
 .booking-summary {

@@ -59,7 +59,7 @@
   color: var(--gold-200);
   font-size: 0.88rem;
   letter-spacing: 0.02em;
-  transition: all 0.25s ease;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
 }
 
 .nav-pill:hover {
@@ -79,23 +79,75 @@
 
 .navbar-burger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  position: relative;
   width: 28px;
+  height: 20px;
+  transition: transform 120ms var(--ease-out);
+}
+
+.navbar-burger:active {
+  transform: scale(0.9);
 }
 
 .navbar-burger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
   height: 2px;
   background: var(--gold-300);
   border-radius: 2px;
-  transition: all 0.25s ease;
+  transition: top 220ms var(--ease-in-out), transform 220ms var(--ease-in-out), opacity 160ms ease;
+}
+
+.navbar-burger span:nth-child(1) {
+  top: 0;
+}
+
+.navbar-burger span:nth-child(2) {
+  top: 9px;
+}
+
+.navbar-burger span:nth-child(3) {
+  top: 18px;
+}
+
+.navbar-burger.is-open span:nth-child(1) {
+  top: 9px;
+  transform: rotate(45deg);
+}
+
+.navbar-burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-burger.is-open span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-45deg);
+}
+
+.navbar-mobile-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 240ms var(--ease-in-out);
+}
+
+.navbar-mobile-wrap.is-open {
+  grid-template-rows: 1fr;
 }
 
 .navbar-mobile {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   padding: 0 1.5rem 1.25rem;
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.navbar-mobile-wrap.is-open .navbar-mobile {
+  opacity: 1;
+  transition: opacity 200ms ease 80ms;
 }
 
 .navbar-mobile .nav-pill,
@@ -109,6 +161,15 @@
     display: none;
   }
   .navbar-burger {
-    display: flex;
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-mobile-wrap {
+    transition: none;
+  }
+  .navbar-burger span {
+    transition: opacity 160ms ease;
   }
 }
