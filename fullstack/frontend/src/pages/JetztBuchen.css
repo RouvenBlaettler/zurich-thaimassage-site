@@ -1,0 +1,134 @@
+.booking-page {
+  min-height: calc(100vh - 76px - 200px);
+  padding: 4rem 0 5rem;
+}
+
+.booking-page h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-top: 0.5rem;
+  color: var(--cream);
+}
+
+.booking-picker {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.booking-picker-group h3 {
+  color: var(--gold-300);
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.booking-picker-tiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.booking-flow {
+  margin-top: 2.5rem;
+}
+
+.booking-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(201, 161, 90, 0.1);
+  border: 1px solid rgba(201, 161, 90, 0.3);
+  border-radius: 14px;
+  color: var(--gold-300);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.booking-change {
+  background: none;
+  border: none;
+  color: var(--gold-500);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.booking-columns {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.booking-slots-panel h3 {
+  color: var(--gold-300);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.booking-slots-empty {
+  color: var(--cream-dim);
+  font-size: 0.9rem;
+}
+
+.booking-confirm {
+  margin-top: 2rem;
+}
+
+.booking-confirmation {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 76px - 200px);
+}
+
+.booking-confirmation-inner {
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.booking-confirmation-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  color: var(--burgundy-950);
+  opacity: 0;
+  transform: scale(0.9);
+  animation: booking-confirm-in 400ms var(--ease-out) forwards;
+}
+
+@keyframes booking-confirm-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.booking-confirmation h1 {
+  color: var(--cream);
+}
+
+.booking-confirmation p {
+  color: var(--cream-dim);
+}
+
+.booking-confirmation-note {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+@media (max-width: 780px) {
+  .booking-columns {
+    grid-template-columns: 1fr;
+  }
+}

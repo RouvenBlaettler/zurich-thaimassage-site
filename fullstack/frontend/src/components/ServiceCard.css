@@ -1,0 +1,46 @@
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem 1.75rem;
+  background: var(--burgundy-800);
+  border: 1px solid rgba(201, 161, 90, 0.25);
+  border-radius: 18px;
+  color: var(--cream);
+  transition: transform 220ms var(--ease-out), border-color 220ms ease;
+}
+
+.service-card h3 {
+  color: var(--gold-300);
+  font-size: 1.5rem;
+}
+
+.service-card p {
+  color: var(--cream-dim);
+  font-size: 0.92rem;
+}
+
+.service-card-link {
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gold-500);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.service-card-link svg {
+  transition: transform 140ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold-500);
+  }
+
+  .service-card:hover .service-card-link svg {
+    transform: translateX(3px);
+  }
+}

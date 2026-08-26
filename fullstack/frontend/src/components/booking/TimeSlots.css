@@ -1,0 +1,36 @@
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 0.6rem;
+}
+
+.time-slot {
+  padding: 0.6rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(201, 161, 90, 0.35);
+  background: transparent;
+  color: var(--cream);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 160ms ease, border-color 160ms ease;
+}
+
+.time-slot:hover {
+  border-color: var(--gold-500);
+}
+
+.time-slot:active {
+  transform: scale(0.96);
+}
+
+.time-slot.is-selected {
+  background: var(--gold-500);
+  border-color: var(--gold-500);
+  color: var(--burgundy-950);
+  font-weight: 600;
+}
+
+.time-slots-empty {
+  color: var(--cream-dim);
+  font-size: 0.9rem;
+}

@@ -1,0 +1,97 @@
+.booking-calendar {
+  background: var(--gold-500);
+  border-radius: 18px;
+  padding: 1.5rem;
+  color: var(--burgundy-950);
+}
+
+.booking-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.booking-calendar-header button {
+  background: none;
+  border: none;
+  color: var(--burgundy-950);
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 50%;
+  transition: background 160ms ease;
+}
+
+.booking-calendar-header button:hover:not(:disabled) {
+  background: rgba(58, 13, 21, 0.1);
+}
+
+.booking-calendar-header button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.booking-calendar-weekdays,
+.booking-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+}
+
+.booking-calendar-weekdays {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0.7;
+  margin-bottom: 0.4rem;
+}
+
+.booking-calendar-pad {
+  visibility: hidden;
+}
+
+.booking-calendar-day {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--burgundy-950);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 160ms ease, color 160ms ease;
+}
+
+.booking-calendar-day:hover:not(:disabled):not(.is-selected) {
+  background: rgba(58, 13, 21, 0.1);
+}
+
+.booking-calendar-day:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.booking-calendar-day:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.booking-calendar-day.is-today {
+  font-weight: 700;
+}
+
+.booking-calendar-day.is-selected {
+  background: var(--burgundy-800);
+  color: var(--gold-300);
+  transform: scale(1);
+  animation: booking-day-selected 220ms var(--ease-out);
+}
+
+@keyframes booking-day-selected {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}

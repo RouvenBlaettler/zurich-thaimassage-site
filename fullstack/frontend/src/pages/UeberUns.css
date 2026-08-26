@@ -1,0 +1,66 @@
+.ueberuns-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--burgundy-950);
+  color: var(--cream);
+  padding: 5rem 0;
+}
+
+.ueberuns-hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  margin-top: 0.5rem;
+  color: var(--cream);
+  max-width: 640px;
+}
+
+.ueberuns-hero-ornament {
+  position: absolute;
+  width: 240px;
+  left: -30px;
+  bottom: -50px;
+  opacity: 0.3;
+}
+
+.ueberuns-points {
+  padding: 4.5rem 0;
+}
+
+.ueberuns-points-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.ueberuns-point h3 {
+  color: var(--burgundy-800);
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.ueberuns-point p {
+  font-size: 0.92rem;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.ueberuns-testimonials {
+  padding: 4.5rem 0 5rem;
+}
+
+.ueberuns-testimonials h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-top: 0.5rem;
+  max-width: 560px;
+}
+
+.ueberuns-testimonials-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.ueberuns-cta {
+  margin-top: 2.5rem;
+  text-align: center;
+}

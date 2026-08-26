@@ -1,0 +1,101 @@
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--burgundy-950);
+  color: var(--cream);
+  padding: 6rem 0 7rem;
+}
+
+.home-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.home-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  color: var(--cream);
+}
+
+.home-hero p {
+  color: var(--cream-dim);
+  font-size: 1.05rem;
+  max-width: 520px;
+}
+
+.home-hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.home-hero-ornament {
+  position: absolute;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.home-hero-ornament-1 {
+  width: 260px;
+  right: -40px;
+  top: -30px;
+}
+
+.home-hero-ornament-2 {
+  width: 220px;
+  right: 10%;
+  bottom: -60px;
+  opacity: 0.3;
+}
+
+.home-services,
+.home-testimonials {
+  padding: 5rem 0;
+}
+
+.home-services h2,
+.home-testimonials h2,
+.home-contact h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-top: 0.5rem;
+  max-width: 560px;
+}
+
+.home-services-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.home-testimonials-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.home-contact {
+  padding: 5rem 0;
+}
+
+.home-contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.home-contact .contact-form {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 860px) {
+  .home-contact-grid {
+    grid-template-columns: 1fr;
+  }
+}

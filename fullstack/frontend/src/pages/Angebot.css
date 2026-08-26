@@ -1,0 +1,121 @@
+.angebot-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--burgundy-950);
+  color: var(--cream);
+  padding: 4.5rem 0;
+}
+
+.angebot-hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-top: 0.5rem;
+  color: var(--cream);
+}
+
+.angebot-hero p {
+  margin-top: 0.75rem;
+  color: var(--cream-dim);
+  max-width: 480px;
+}
+
+.angebot-hero-ornament {
+  position: absolute;
+  width: 260px;
+  right: -30px;
+  top: -40px;
+  opacity: 0.35;
+}
+
+.angebot-list {
+  padding: 3.5rem 0 5rem;
+}
+
+.angebot-filters {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.35rem;
+  padding: 0.35rem;
+  border: 1px solid rgba(58, 13, 21, 0.15);
+  border-radius: 999px;
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Sliding pill positioning assumes a single row — never let tabs wrap. */
+.angebot-filter {
+  flex: none;
+}
+
+.angebot-filter-pill {
+  position: absolute;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  background: var(--burgundy-800);
+  border-radius: 999px;
+  transition: left 220ms var(--ease-out), width 220ms var(--ease-out);
+  z-index: 0;
+}
+
+.angebot-filter {
+  position: relative;
+  z-index: 1;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.angebot-filter.is-active {
+  color: var(--cream);
+}
+
+.angebot-rows {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.angebot-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(58, 13, 21, 0.12);
+}
+
+.angebot-row h3 {
+  font-size: 1.3rem;
+}
+
+.angebot-row-tier {
+  display: inline-block;
+  margin-top: 0.3rem;
+  color: var(--burgundy-700);
+  font-size: 0.85rem;
+}
+
+.angebot-row-price {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--burgundy-800);
+}
+
+@media (max-width: 620px) {
+  .angebot-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .angebot-row .btn {
+    justify-self: start;
+  }
+}
