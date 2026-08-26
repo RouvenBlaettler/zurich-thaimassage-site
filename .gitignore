@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Environment variables (secrets) — keep the example tracked, never the real file
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
