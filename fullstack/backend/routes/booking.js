@@ -3,22 +3,28 @@ import express from "express";
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-    console.log(req.body);
+    console.log("Daten vom Frontend:", req.body);
 
+
+    
     const url = "https://api.cal.com/v2/bookings";
 
     const bookingData = {
-        start: "2026-09-10T10:00:00Z",
+        start: `${req.body.bookingDate}T${req.body.bookingTime}:00Z`,
 
         eventTypeId: 6696438,
 
         attendee: {
-            name: "Test User",
-            email: "vanshisbossofficial@gmail.com",
+            name: `${req.body.firstname} ${req.body.lastname}`,
+            email: req.body.email,
             timeZone: "Europe/Zurich",
             language: "en"
         },
 
+        location: {
+            type: "attendeeAddress",
+            address: "DEINE ADRESSE"
+        },
         metadata: {}
     };
 
@@ -56,6 +62,7 @@ router.post("/", async (req, res) => {
             error: error.message
         });
     }
+    
 });
 
 export default router;
