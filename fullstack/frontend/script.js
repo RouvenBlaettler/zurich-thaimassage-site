@@ -21,6 +21,9 @@ form.addEventListener("submit", async (event) => {
         body: JSON.stringify({
             firstname: document.getElementById("fname").value,
             lastname: document.getElementById("lname").value,
+            email: document.getElementById("email"),
+            bookingDate: document.getElementById("bookingDate"),
+            bookingTime: document.getElementById("bookingTime"),
             massagetype: document.getElementById("massagetype").value
         })
     });
