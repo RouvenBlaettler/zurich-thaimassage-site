@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 
@@ -16,3 +17,6 @@ build/
 # Logs
 *.log
 npm-debug.log*
+=======
+.env
+>>>>>>> vanshbranch

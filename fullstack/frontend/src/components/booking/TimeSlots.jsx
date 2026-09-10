@@ -1,5 +1,6 @@
 import "./TimeSlots.css";
 
+<<<<<<< HEAD
 const OPEN_MINUTES = 10 * 60 + 30; // 10:30
 const CLOSE_MINUTES = 21 * 60; // 21:00
 const STEP_MINUTES = 30;
@@ -26,17 +27,38 @@ function buildSlots(date, durationMinutes) {
 export default function TimeSlots({ date, durationMinutes, selected, onSelect }) {
   const slots = buildSlots(date, durationMinutes);
 
+=======
+export default function TimeSlots({
+  date,
+  durationMinutes,
+  slots,
+  selected,
+  onSelect
+}) {
+>>>>>>> vanshbranch
   if (slots.length === 0) {
     return <p className="time-slots-empty">Keine Verfügbarkeit an diesem Tag.</p>;
   }
 
   return (
     <div className="time-slots">
+<<<<<<< HEAD
       {slots.map((minutes) => {
         const label = formatMinutes(minutes);
         return (
           <button
             key={minutes}
+=======
+      {slots.map((slot) => {
+        const label = new Date(slot.start).toLocaleTimeString("de-CH", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        return (
+          <button
+            key={slot.start}
+>>>>>>> vanshbranch
             type="button"
             className={`time-slot ${selected === label ? "is-selected" : ""}`}
             onClick={() => onSelect(label)}
@@ -47,4 +69,8 @@ export default function TimeSlots({ date, durationMinutes, selected, onSelect })
       })}
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> vanshbranch

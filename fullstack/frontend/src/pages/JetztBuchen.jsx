@@ -20,11 +20,33 @@ export default function JetztBuchen() {
   const [date, setDate] = useState(null);
   const [time, setTime] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
+<<<<<<< HEAD
+=======
+  const [availableSlots, setAvailableSlots] = useState([]);
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+>>>>>>> vanshbranch
 
   useEffect(() => {
     document.title = "Jetzt Buchen — Gesundheits-Thaimassage Seefeld";
   }, []);
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    if (!date) return;
+
+    const formattedDate =
+      `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
+    fetch(`http://localhost:4000/api/slots?date=${formattedDate}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAvailableSlots(data.data?.[formattedDate] ?? []);      });
+  }, [date]);
+
+>>>>>>> vanshbranch
   function chooseService(service, chosenTier) {
     setCategory(service.category);
     setTier(chosenTier);
@@ -37,6 +59,42 @@ export default function JetztBuchen() {
     setTime(null);
   }
 
+<<<<<<< HEAD
+=======
+  async function handleBooking(event) {
+    event.preventDefault();
+
+    const formattedDate =
+      `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
+    const response = await fetch("http://localhost:4000/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        email,
+        bookingDate: formattedDate,
+        bookingTime: time,
+        massagetype: category,
+      }),
+  });
+
+  const data = await response.json();
+
+  console.log("Booking response:", data);
+
+  if (!response.ok) {
+    console.error("Booking fehlgeschlagen:", data);
+    return;
+  }
+
+  setConfirmed(true);
+}
+
+>>>>>>> vanshbranch
   if (confirmed) {
     return (
       <section className="section-dark booking-page booking-confirmation">
@@ -99,14 +157,23 @@ export default function JetztBuchen() {
 
               <div className="booking-slots-panel">
                 <h3>Verfügbare Zeiten</h3>
+<<<<<<< HEAD
+=======
+
+>>>>>>> vanshbranch
                 {date ? (
                   <TimeSlots
                     date={date}
                     durationMinutes={parseMinutes(tier.label)}
+<<<<<<< HEAD
+=======
+                    slots={availableSlots}
+>>>>>>> vanshbranch
                     selected={time}
                     onSelect={setTime}
                   />
                 ) : (
+<<<<<<< HEAD
                   <p className="booking-slots-empty">Bitte zuerst ein Datum auswählen.</p>
                 )}
 
@@ -118,6 +185,60 @@ export default function JetztBuchen() {
                 >
                   Termin bestätigen
                 </button>
+=======
+                  <p className="booking-slots-empty">
+                    Bitte zuerst ein Datum auswählen.
+                  </p>
+                )}
+
+                {date && time && (
+                  <form className="booking-form" onSubmit={handleBooking}>
+                    <h3>Ihre Angaben</h3>
+
+                    <div className="booking-form-row">
+                      <div className="booking-form-field">
+                        <label htmlFor="fname">Vorname</label>
+                        <input
+                          id="fname"
+                          type="text"
+                          value={firstname}
+                          onChange={(event) => setFirstname(event.target.value)}
+                          required
+                        />
+                      </div>
+
+                      <div className="booking-form-field">
+                        <label htmlFor="lname">Nachname</label>
+                        <input
+                          id="lname"
+                          type="text"
+                          value={lastname}
+                          onChange={(event) => setLastname(event.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="booking-form-field">
+                      <label htmlFor="email">E-Mail</label>
+                      <input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="btn booking-confirm"
+                    >
+                      Termin bestätigen
+                    </button>
+                  </form>
+                )}
+>>>>>>> vanshbranch
               </div>
             </div>
           </Reveal>
