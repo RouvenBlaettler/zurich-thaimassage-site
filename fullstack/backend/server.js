@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import bookingrouter from "./routes/booking.js";
+import slotsrouter from "./routes/slots.js";
 
 const app = express();
 const PORT = 4000;
@@ -17,6 +18,7 @@ app.get('/api/status', (req,res) => {
 
 
 app.use('/api/bookings', bookingrouter);
+app.use('/api/slots', slotsrouter);
 
 app.listen(PORT, () => {
     console.log('backend läuft auf http://localhost:4000');
