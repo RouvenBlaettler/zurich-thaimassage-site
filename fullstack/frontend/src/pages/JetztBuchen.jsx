@@ -20,20 +20,15 @@ export default function JetztBuchen() {
   const [date, setDate] = useState(null);
   const [time, setTime] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
-<<<<<<< HEAD
-=======
   const [availableSlots, setAvailableSlots] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
->>>>>>> vanshbranch
 
   useEffect(() => {
     document.title = "Jetzt Buchen — Gesundheits-Thaimassage Seefeld";
   }, []);
 
-<<<<<<< HEAD
-=======
   useEffect(() => {
     if (!date) return;
 
@@ -46,7 +41,6 @@ export default function JetztBuchen() {
         setAvailableSlots(data.data?.[formattedDate] ?? []);      });
   }, [date]);
 
->>>>>>> vanshbranch
   function chooseService(service, chosenTier) {
     setCategory(service.category);
     setTier(chosenTier);
@@ -59,8 +53,6 @@ export default function JetztBuchen() {
     setTime(null);
   }
 
-<<<<<<< HEAD
-=======
   async function handleBooking(event) {
     event.preventDefault();
 
@@ -94,7 +86,6 @@ export default function JetztBuchen() {
   setConfirmed(true);
 }
 
->>>>>>> vanshbranch
   if (confirmed) {
     return (
       <section className="section-dark booking-page booking-confirmation">
@@ -157,35 +148,15 @@ export default function JetztBuchen() {
 
               <div className="booking-slots-panel">
                 <h3>Verfügbare Zeiten</h3>
-<<<<<<< HEAD
-=======
-
->>>>>>> vanshbranch
                 {date ? (
                   <TimeSlots
                     date={date}
                     durationMinutes={parseMinutes(tier.label)}
-<<<<<<< HEAD
-=======
                     slots={availableSlots}
->>>>>>> vanshbranch
                     selected={time}
                     onSelect={setTime}
                   />
                 ) : (
-<<<<<<< HEAD
-                  <p className="booking-slots-empty">Bitte zuerst ein Datum auswählen.</p>
-                )}
-
-                <button
-                  type="button"
-                  className="btn booking-confirm"
-                  disabled={!date || !time}
-                  onClick={() => setConfirmed(true)}
-                >
-                  Termin bestätigen
-                </button>
-=======
                   <p className="booking-slots-empty">
                     Bitte zuerst ein Datum auswählen.
                   </p>
@@ -238,7 +209,6 @@ export default function JetztBuchen() {
                     </button>
                   </form>
                 )}
->>>>>>> vanshbranch
               </div>
             </div>
           </Reveal>
