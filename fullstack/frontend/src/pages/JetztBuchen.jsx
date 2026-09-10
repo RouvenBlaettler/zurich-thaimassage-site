@@ -21,6 +21,9 @@ export default function JetztBuchen() {
   const [time, setTime] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
   const [availableSlots, setAvailableSlots] = useState([]);
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     document.title = "Jetzt Buchen — Gesundheits-Thaimassage Seefeld";
@@ -49,6 +52,39 @@ export default function JetztBuchen() {
     setDate(nextDate);
     setTime(null);
   }
+
+  async function handleBooking(event) {
+    event.preventDefault();
+
+    const formattedDate =
+      `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
+    const response = await fetch("http://localhost:4000/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        email,
+        bookingDate: formattedDate,
+        bookingTime: time,
+        massagetype: category,
+      }),
+  });
+
+  const data = await response.json();
+
+  console.log("Booking response:", data);
+
+  if (!response.ok) {
+    console.error("Booking fehlgeschlagen:", data);
+    return;
+  }
+
+  setConfirmed(true);
+}
 
   if (confirmed) {
     return (
@@ -112,6 +148,7 @@ export default function JetztBuchen() {
 
               <div className="booking-slots-panel">
                 <h3>Verfügbare Zeiten</h3>
+
                 {date ? (
                   <TimeSlots
                     date={date}
@@ -121,17 +158,58 @@ export default function JetztBuchen() {
                     onSelect={setTime}
                   />
                 ) : (
-                  <p className="booking-slots-empty">Bitte zuerst ein Datum auswählen.</p>
+                  <p className="booking-slots-empty">
+                    Bitte zuerst ein Datum auswählen.
+                  </p>
                 )}
 
-                <button
-                  type="button"
-                  className="btn booking-confirm"
-                  disabled={!date || !time}
-                  onClick={() => setConfirmed(true)}
-                >
-                  Termin bestätigen
-                </button>
+                {date && time && (
+                  <form className="booking-form" onSubmit={handleBooking}>
+                    <h3>Ihre Angaben</h3>
+
+                    <div className="booking-form-row">
+                      <div className="booking-form-field">
+                        <label htmlFor="fname">Vorname</label>
+                        <input
+                          id="fname"
+                          type="text"
+                          value={firstname}
+                          onChange={(event) => setFirstname(event.target.value)}
+                          required
+                        />
+                      </div>
+
+                      <div className="booking-form-field">
+                        <label htmlFor="lname">Nachname</label>
+                        <input
+                          id="lname"
+                          type="text"
+                          value={lastname}
+                          onChange={(event) => setLastname(event.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="booking-form-field">
+                      <label htmlFor="email">E-Mail</label>
+                      <input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="btn booking-confirm"
+                    >
+                      Termin bestätigen
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </Reveal>

@@ -132,3 +132,54 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
+.booking-form {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.booking-form h3 {
+  margin-bottom: 1.5rem;
+}
+
+.booking-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.booking-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.booking-form-field label {
+  font-size: 0.9rem;
+}
+
+.booking-form-field input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.booking-form-field input:focus {
+  outline: none;
+  border-color: currentColor;
+}
+
+@media (max-width: 600px) {
+  .booking-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
