@@ -17,6 +17,9 @@ build/
 # Logs
 *.log
 npm-debug.log*
+
+#AI
+.claude
 =======
 .env
 >>>>>>> vanshbranch
