@@ -22,18 +22,37 @@ export default function ContactForm() {
     return Object.keys(next).length === 0;
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (!validate()) return;
+async function handleSubmit(event) {
+  event.preventDefault();
 
-    setStatus("sending");
-    // No backend endpoint exists yet for the contact form — this simulates
-    // the submit state locally rather than calling a route that isn't there.
-    window.setTimeout(() => {
-      setStatus("sent");
-      setValues(EMPTY);
-    }, 600);
+  if (!validate()) return;
+
+  setStatus("sending");
+
+  try {
+    const response = await fetch("http://localhost:4000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Nachricht konnte nicht gesendet werden.");
+    }
+
+    setStatus("sent");
+    setValues(EMPTY);
+
+  } catch (error) {
+    console.error(error);
+    setStatus("idle");
+    alert("Die Nachricht konnte leider nicht gesendet werden.");
   }
+}
 
   if (status === "sent") {
     return (
