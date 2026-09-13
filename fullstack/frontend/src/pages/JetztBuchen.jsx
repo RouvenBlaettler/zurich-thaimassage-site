@@ -11,6 +11,8 @@ function parseMinutes(label) {
   return parseInt(label, 10);
 }
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
 export default function JetztBuchen() {
   const location = useLocation();
   const incoming = location.state;
@@ -35,7 +37,7 @@ export default function JetztBuchen() {
     const formattedDate =
       `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
-    fetch(`http://localhost:4000/api/slots?date=${formattedDate}`)
+    fetch(`${API_URL}/api/slots?date=${formattedDate}`)
       .then((response) => response.json())
       .then((data) => {
         setAvailableSlots(data.data?.[formattedDate] ?? []);      });
@@ -59,7 +61,7 @@ export default function JetztBuchen() {
     const formattedDate =
       `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
-    const response = await fetch("http://localhost:4000/api/bookings", {
+    const response = await fetch(`${API_URL}/api/bookings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
