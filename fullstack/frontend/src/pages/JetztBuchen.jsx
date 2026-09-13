@@ -11,7 +11,7 @@ function parseMinutes(label) {
   return parseInt(label, 10);
 }
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:4000").replace(/\/$/, "");
 
 export default function JetztBuchen() {
   const location = useLocation();
